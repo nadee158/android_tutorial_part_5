@@ -13,14 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".HelloWorldActivity" />
-        <activity android:name="lk.uok.mit.activity.SendMessageActivity">
+        <activity android:name="lk.uok.mit.activity.SendMessageActivity"></activity>
+        <activity android:name="lk.uok.mit.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="lk.uok.mit.activity.MainActivity"></activity>
     </application>
 
 </manifest>
