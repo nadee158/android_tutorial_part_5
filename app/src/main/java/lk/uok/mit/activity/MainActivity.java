@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import lk.uok.mit.helloworld.HelloWorldActivity;
@@ -20,6 +23,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //get a reference to the "android.support.v7.widget.Toolbar"
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        //set the toolbar as the action bar
+        setSupportActionBar(toolbar);
+        //get a reference to "android.support.v7.app.ActionBar"
+        ActionBar actionbar = getSupportActionBar();
+        //Enable the app bar's "home" button
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        //set the icon we added above as the button
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         //initialize the context
         this.context = getApplicationContext();
         //get a reference to the drawer layout
@@ -52,5 +65,15 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
