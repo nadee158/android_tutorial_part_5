@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import lk.uok.mit.fragment.MainFragment;
 import lk.uok.mit.helloworld.HelloWorldActivity;
 import lk.uok.mit.helloworld.R;
 
@@ -37,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
         this.context = getApplicationContext();
         //get a reference to the drawer layout
         this.mDrawerLayout = findViewById(R.id.drawer_layout);
+
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        // Replace the contents of the container with the new fragment
+        ft.replace(R.id.fragment_content, new MainFragment());
+        // or ft.add(R.id.content_frame, new MainFragment());
+        // Complete the changes added above
+        ft.commit();
+
         //get a reference to the navigation view
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
