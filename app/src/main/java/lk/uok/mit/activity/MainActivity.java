@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import lk.uok.mit.fragment.AccelerometerDemoFragment;
 import lk.uok.mit.fragment.MainFragment;
 import lk.uok.mit.helloworld.HelloWorldActivity;
 import lk.uok.mit.helloworld.R;
@@ -71,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
                                 //Navigate to HelloWorldActivity
                                 intent = new Intent(context, HelloWorldActivity.class);
                                 startActivity(intent);
+                                break;
+                            case R.id.nav_accelerometer_demo:
+                                //Open the  AccelerometerDemoFragment
+                                // Begin the transaction
+                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                                // Replace the contents of the container with the new fragment
+                                ft.replace(R.id.fragment_content, new AccelerometerDemoFragment());
+                                // or ft.add(R.id.content_frame, new MainFragment());
+                                // Complete the changes added above
+                                ft.commit();
                                 break;
                         }
                         return true;
